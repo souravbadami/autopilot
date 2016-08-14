@@ -6,13 +6,13 @@ This script automatically detects when there’s no one nearby and sends the sys
 
 1. Install OpenCV (Debian).
 
-```
-    sudo apt-get install python-opencv
-```
+   ```
+   sudo apt-get install python-opencv
+   ```
 
 2. Open terminal and execute the following command.
 
-```
-    python autosleep.py
-```
+   ```
+   sudo python autosleep.py
+   ```
 

@@ -2,7 +2,7 @@
 #
 # AutoPilot :: Sourav Badami :: http://www.souravbadami.me
 # Script: AutoSleep
-# Description: This script automatically detects when there’s no one nearby and
+# Description: This script automatically detects when theres no one nearby and
 #              sends the system to sleep mode.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@ import ctypes
 DELTA_COUNT_THRESHOLD = 1000
 STILL_TIME = 0
 
-# Set sleep trigger time in seconds
+# Set sleep trigger time in seconds (Default: 30 minutes)
 STT = 1800
 
 def delta_images(t0, t1, t2):
@@ -45,7 +45,7 @@ def started():
     Notify.init("Started")
     #Shows Notification on the desktop
     Notify.Notification.new("\nAutoPilot"," The system has been taken over by AutoPilot.").show()
-    #os.system("shutdown now -h")
+    os.system("shutdown now -h")
     
 started()
     
@@ -67,7 +67,7 @@ def start_timer():
     while STILL_TIME != 0:
         STILL_TIME = STILL_TIME + 1
         #print(STILL_TIME-1, "Seconds")
-        if STILL_TIME/2 == 31:
+        if STILL_TIME/2 == STT:
             timeout()
         time.sleep(1)
 
