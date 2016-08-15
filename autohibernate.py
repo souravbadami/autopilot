@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 #
 # AutoPilot :: Sourav Badami :: http://www.souravbadami.me
-# Script: AutoSleep
+# Script: AutoHibernate
 # Description: This script automatically detects when theres no one nearby and
-#              sends the system to sleep mode.
+#              sends the system to hibernation mode.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import ctypes
 DELTA_COUNT_THRESHOLD = 1000
 STILL_TIME = 0
 
-# Set sleep trigger time in seconds (Default: 30 minutes)
+# Set hibernation trigger time in seconds (Default: 30 minutes)
 STT = 1800
 
 def delta_images(t0, t1, t2):
@@ -45,7 +45,6 @@ def started():
     Notify.init("Started")
     #Shows Notification on the desktop
     Notify.Notification.new("\nAutoPilot"," The system has been taken over by AutoPilot.").show()
-    os.system("shutdown now -h")
     
 started()
     
@@ -56,8 +55,8 @@ def timeout():
     global timer_thread
     Notify.init("AutoPilot")
     #Shows Notification on the desktop
-    Notify.Notification.new("\nAutoPilot"," System going down to sleep mode.").show()
-    #os.system("shutdown now -h")
+    Notify.Notification.new("\nAutoPilot"," System going down to hibernation mode.").show()
+    os.system("pm-hibernate")
     
 def start_timer():
     """
@@ -86,7 +85,7 @@ print str(cam)
 cam.set(3,640)
 cam.set(4,480)
 
-winName = "AutoPilot"
+winName = "AutoHibernation :: AutoPilot Applications"
 cv2.namedWindow(winName, cv2.CV_WINDOW_AUTOSIZE)
 
 t_minus = cam.read()[1]
