@@ -3,6 +3,7 @@ from __future__ import print_function
 from bs4 import BeautifulSoup
 from gi.repository import Notify
 import re
+import subprocess
 from mechanize import Browser
 import time
 import urllib
@@ -46,6 +47,7 @@ def main():
     tdVal = table.find("td", attrs={"":""}).get_text()
     if currentStatus not in tdVal:
     	changed = 1
+        subprocess.call(['spd-say', '"Passport Status Changed!"'])
 
 if __name__ == '__main__':
 	start_bot()
